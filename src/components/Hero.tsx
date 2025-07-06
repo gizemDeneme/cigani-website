@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero: React.FC = () => {
+  const { t, language } = useLanguage();
+  
   return (
     <section className="relative h-screen flex items-center justify-center">
       {/* Background image with high opacity for original photo look */}
@@ -12,12 +15,11 @@ const Hero: React.FC = () => {
       {/* Content overlay */}
       <div className="relative z-20 text-center w-full">
         <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-light mb-6 tracking-wide drop-shadow-lg text-warm-gray-50">
-          Yalın. Taze. Ege.
+          {language === 'tr' ? 'Yalın. Taze. Ege.' : 'Simple. Fresh. Aegean.'}
         </h2>
         <p className="text-lg md:text-xl font-light max-w-2xl mx-auto px-4 drop-shadow text-warm-gray-100 mb-2">
-          Ege'nin bereketli topraklarından sofralarınıza
+          {language === 'tr' ? 'Ege\'nin bereketli topraklarından sofralarınıza' : 'From the fertile lands of the Aegean to your tables'}
         </p>
-        {/* #sadecehisset hashtag removed */}
       </div>
     </section>
   );

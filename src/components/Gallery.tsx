@@ -3,7 +3,7 @@ import { galleryData } from '../data/galleryData';
 
 const Gallery: React.FC = () => {
   return (
-    <section className="section-padding bg-white">
+    <section id="gallery" className="section-padding bg-white">
       <div className="container-custom">
         <h2 className="text-3xl md:text-4xl font-serif font-medium text-warm-gray-800 text-center mb-12">
           Galeri

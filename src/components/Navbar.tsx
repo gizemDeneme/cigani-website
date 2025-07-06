@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
-
-const menuItems = [
-  { label: 'Hakkımızda', href: '#about' },
-  { label: 'Galeri', href: '#gallery' },
-  { label: 'Menü', href: '#menu' },
-  { label: 'İletişim', href: '#contact' },
-];
-
-const contactInfo = {
-  address: 'Sığacık, 128. Sk. No:22, 35460 Seferihisar/İzmir',
-  phone: '0533 205 98 73',
-  instagram: 'https://instagram.com/cigani.sigacik',
-  hours: '17:00 - 01:00',
-};
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Navbar: React.FC = () => {
+  const { language, setLanguage, t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+
+  const menuItems = [
+    { label: t('about'), href: '#about' },
+    { label: t('gallery'), href: '#gallery' },
+    { label: t('menu'), href: '#menu' },
+  ];
+
+  const contactInfo = {
+    address: 'Sığacık, 128. Sk. No:22, 35460 Seferihisar/İzmir',
+    phone: '+905332059873',
+    instagram: 'https://instagram.com/cigani.sigacik',
+    hours: '17:00 - 01:00',
+  };
 
   const handleMenuToggle = () => setMenuOpen((open) => !open);
   const handleMenuClose = () => setMenuOpen(false);
@@ -33,38 +33,42 @@ const Navbar: React.FC = () => {
     }
   };
 
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert('Rezervasyon talebiniz alındı!');
-    setForm({ name: '', email: '', message: '' });
-    setContactOpen(false);
+  const toggleLanguage = () => {
+    setLanguage(language === 'tr' ? 'en' : 'tr');
   };
 
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-warm-gray-200">
-        <div className="container-custom relative flex items-center justify-center h-16 md:h-20">
+        <div className="container-custom relative flex items-center justify-center h-20 md:h-24">
           {/* Menu Icon (left) */}
           <button
             className="absolute left-0 flex items-center justify-center h-full px-4 focus:outline-none"
             onClick={handleMenuToggle}
             aria-label="Menüyü Aç"
           >
-            <svg className="w-7 h-7 text-warm-gray-800" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <svg className="w-8 h-8 text-warm-gray-800" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
+          </button>
+
+          {/* Language Toggle (left of logo) */}
+          <button
+            className="absolute left-16 flex items-center justify-center h-full px-2 focus:outline-none"
+            onClick={toggleLanguage}
+            aria-label="Dil Değiştir"
+          >
+            <span className="text-sm font-medium text-warm-gray-800">
+              {language === 'tr' ? 'EN' : 'TR'}
+            </span>
           </button>
 
           {/* Centered Logo */}
           <img
             src="/images/logo.png"
             alt="Cigani Restaurant Logo"
-            className="h-8 md:h-12 w-auto object-contain mx-auto"
-            style={{ maxHeight: '48px', background: 'transparent' }}
+            className="h-12 md:h-16 w-auto object-contain mx-auto"
+            style={{ maxHeight: '64px', background: 'transparent' }}
           />
 
           {/* Contact Icon (right) */}
@@ -73,7 +77,7 @@ const Navbar: React.FC = () => {
             onClick={handleContactToggle}
             aria-label="İletişim Menüsü"
           >
-            <svg className="w-7 h-7 text-warm-gray-800" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <svg className="w-8 h-8 text-warm-gray-800" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 10.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4.5M16 7l-4 4-4-4" />
             </svg>
           </button>
@@ -126,7 +130,7 @@ const Navbar: React.FC = () => {
             className="fixed inset-0 bg-black/40 z-50 transition-opacity duration-300"
             onClick={handleContactClose}
           ></div>
-          <aside className="fixed top-0 right-0 h-full w-80 bg-white shadow-lg z-50 flex flex-col p-8 animate-slide-in-right overflow-y-auto">
+          <aside className="fixed top-0 right-0 h-full w-96 bg-white shadow-lg z-50 flex flex-col p-8 animate-slide-in-right overflow-y-auto">
             <button
               className="self-end mb-8 text-warm-gray-700 hover:text-warm-gray-900 text-2xl focus:outline-none"
               onClick={handleContactClose}
@@ -136,15 +140,15 @@ const Navbar: React.FC = () => {
             </button>
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-serif font-medium text-warm-gray-800 mb-2">Adres</h3>
+                <h3 className="text-xl font-serif font-medium text-warm-gray-800 mb-2">{t('address')}</h3>
                 <p className="text-warm-gray-600">{contactInfo.address}</p>
               </div>
               <div>
-                <h3 className="text-xl font-serif font-medium text-warm-gray-800 mb-2">Telefon</h3>
+                <h3 className="text-xl font-serif font-medium text-warm-gray-800 mb-2">{t('phone')}</h3>
                 <p className="text-warm-gray-600">{contactInfo.phone}</p>
               </div>
               <div>
-                <h3 className="text-xl font-serif font-medium text-warm-gray-800 mb-2">Instagram</h3>
+                <h3 className="text-xl font-serif font-medium text-warm-gray-800 mb-2">{t('instagram')}</h3>
                 <a
                   href={contactInfo.instagram}
                   target="_blank"
@@ -158,44 +162,137 @@ const Navbar: React.FC = () => {
                 </a>
               </div>
               <div>
-                <h3 className="text-xl font-serif font-medium text-warm-gray-800 mb-2">Çalışma Saatleri</h3>
+                <h3 className="text-xl font-serif font-medium text-warm-gray-800 mb-2">{t('workingHours')}</h3>
                 <p className="text-warm-gray-600">{contactInfo.hours}</p>
               </div>
               <div>
-                <h3 className="text-xl font-serif font-medium text-warm-gray-800 mb-2">Rezervasyon Formu</h3>
-                <form onSubmit={handleFormSubmit} className="space-y-4">
-                  <input
-                    type="text"
-                    name="name"
-                    value={form.name}
-                    onChange={handleFormChange}
-                    required
-                    placeholder="Ad Soyad"
-                    className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none"
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleFormChange}
-                    required
-                    placeholder="E-posta"
-                    className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none"
-                  />
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleFormChange}
-                    required
-                    rows={3}
-                    placeholder="Mesajınız"
-                    className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none resize-none"
-                  />
+                <h3 className="text-xl font-serif font-medium text-warm-gray-800 mb-4">{t('reservationTitle')}</h3>
+                <form 
+                  action="https://formsubmit.co/info@boii.com.tr" 
+                  method="POST"
+                  className="space-y-4"
+                >
+                  {/* Hidden fields */}
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_subject" value="Yeni Rezervasyon Talebi" />
+                  
+                  {/* Name field */}
+                  <div>
+                    <label className="block text-sm font-medium text-warm-gray-700 mb-1">
+                      {t('name')} *
+                    </label>
+                    <input
+                      type="text"
+                      name="isim"
+                      required
+                      className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none rounded"
+                      placeholder={t('namePlaceholder')}
+                    />
+                  </div>
+                  
+                  {/* Email field */}
+                  <div>
+                    <label className="block text-sm font-medium text-warm-gray-700 mb-1">
+                      {t('email')} *
+                    </label>
+                    <input
+                      type="email"
+                      name="eposta"
+                      required
+                      className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none rounded"
+                      placeholder={t('emailPlaceholder')}
+                    />
+                  </div>
+                  
+                  {/* Phone field */}
+                  <div>
+                    <label className="block text-sm font-medium text-warm-gray-700 mb-1">
+                      {t('phoneNumber')} *
+                    </label>
+                    <input
+                      type="tel"
+                      name="telefon"
+                      required
+                      className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none rounded"
+                      placeholder={t('phonePlaceholder')}
+                    />
+                  </div>
+                  
+                  {/* Number of guests field */}
+                  <div>
+                    <label className="block text-sm font-medium text-warm-gray-700 mb-1">
+                      {t('guests')} *
+                    </label>
+                    <input
+                      type="text"
+                      name="kisi_sayisi"
+                      required
+                      className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none rounded"
+                      placeholder={t('guestsPlaceholder')}
+                    />
+                  </div>
+                  
+                  {/* Date field */}
+                  <div>
+                    <label className="block text-sm font-medium text-warm-gray-700 mb-1">
+                      {t('date')} *
+                    </label>
+                    <input
+                      type="date"
+                      name="tarih"
+                      required
+                      className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none rounded"
+                    />
+                  </div>
+                  
+                  {/* Time field */}
+                  <div>
+                    <label className="block text-sm font-medium text-warm-gray-700 mb-1">
+                      {t('time')} *
+                    </label>
+                    <select
+                      name="saat"
+                      required
+                      className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none rounded"
+                    >
+                      <option value="">{t('timeSelectPlaceholder')}</option>
+                      {/* Assuming translations object is defined elsewhere or will be added */}
+                      {/* For now, using a placeholder or a simple array if translations is not available */}
+                      {/* This part needs to be properly integrated with translations */}
+                      {/* Example: translations[language]?.timeOptions || [] */}
+                      <option value="17:00">17:00</option>
+                      <option value="17:30">17:30</option>
+                      <option value="18:00">18:00</option>
+                      <option value="18:30">18:30</option>
+                      <option value="19:00">19:00</option>
+                      <option value="19:30">19:30</option>
+                      <option value="20:00">20:00</option>
+                      <option value="20:30">20:30</option>
+                      <option value="21:00">21:00</option>
+                      <option value="21:30">21:30</option>
+                      <option value="22:00">22:00</option>
+                    </select>
+                  </div>
+                  
+                  {/* Notes field */}
+                  <div>
+                    <label className="block text-sm font-medium text-warm-gray-700 mb-1">
+                      {t('notes')}
+                    </label>
+                    <textarea
+                      name="notlar"
+                      rows={3}
+                      className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none rounded resize-none"
+                      placeholder={t('notesPlaceholder')}
+                    />
+                  </div>
+                  
+                  {/* Submit button */}
                   <button
                     type="submit"
-                    className="btn-primary w-full"
+                    className="w-full bg-warm-gray-800 text-white py-3 px-4 rounded hover:bg-warm-gray-700 transition-colors duration-300 font-medium"
                   >
-                    Gönder
+                    {t('submit')}
                   </button>
                 </form>
               </div>

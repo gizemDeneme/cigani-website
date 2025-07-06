@@ -20,8 +20,7 @@ const About: React.FC = () => {
               Burası sadece yemek yenen değil, yaşanılan bir yerdir.
             </p>
             <p className="text-lg leading-relaxed mt-6 font-serif font-semibold text-warm-gray-800">
-              Gelin, soframıza katılın.<br/>
-              #sadecehisset
+              Gelin, soframıza katılın.
             </p>
           </div>
         </div>

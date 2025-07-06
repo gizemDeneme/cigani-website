@@ -17,7 +17,6 @@ export const translations = {
     aboutText2: 'Burada her tabak, toprağa ve mevsime duyulan saygıyla hazırlanır. Geleneksel tarifler modern sunumlarla yeniden hayat bulurken, misafirlerimize sadece bir yemek değil; dingin, zarif ve samimi bir deneyim sunmayı amaçlıyoruz.',
     aboutText3: 'Cigani\'de masa paylaşılır, zaman yavaş akar. Sohbet uzar, kadehler dostluğa kalkar. Burası sadece yemek yenen değil, yaşanılan bir yerdir.',
     aboutText4: 'Gelin, soframıza katılın.',
-    aboutTag: '#sadecehisset',
     
     // Gallery Section
     galleryTitle: 'Galeri',
@@ -86,7 +85,6 @@ export const translations = {
     aboutText2: 'Here, every dish is prepared with respect for the soil and season. While traditional recipes come to life with modern presentations, we aim to offer our guests not just a meal, but a peaceful, elegant, and sincere experience.',
     aboutText3: 'At Cigani, tables are shared, time flows slowly. Conversations extend, glasses are raised to friendship. This is not just a place to eat, but a place to live.',
     aboutText4: 'Come, join our table.',
-    aboutTag: '#justfeel',
     
     // Gallery Section
     galleryTitle: 'Gallery',

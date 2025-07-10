@@ -1,6 +1,5 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Allow: /
+Disallow:
 
-# Sitemap
-Sitemap: https://cigani-website.onrender.com/sitemap.xml
+Sitemap: https://www.cigani.com.tr/sitemap.xml

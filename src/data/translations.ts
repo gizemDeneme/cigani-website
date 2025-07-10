@@ -57,7 +57,7 @@ export const translations = {
     // Contact Info
     addressValue: 'Sığacık, 128. Sk. No:22, 35460 Seferihisar/İzmir',
     phoneValue: '+905332059873',
-    instagramValue: '@cigani_restaurant',
+    instagramValue: '@cigani.sigacik',
     workingHoursValue: '17:00 - 01:00',
     
     // Time options
@@ -125,7 +125,7 @@ export const translations = {
     // Contact Info
     addressValue: 'Sığacık, 128. Sk. No:22, 35460 Seferihisar/İzmir',
     phoneValue: '+905332059873',
-    instagramValue: '@cigani_restaurant',
+    instagramValue: '@cigani.sigacik',
     workingHoursValue: '17:00 - 01:00',
     
     // Time options

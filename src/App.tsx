@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './contexts/LanguageContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -14,7 +15,7 @@ function App() {
       "@type": "Restaurant",
       "name": "Cigani Restaurant",
       "description": "Sığacık'ta Ege'nin bereketli topraklarından ilham alan gastronomi deneyimi",
-      "url": "https://cigani-website.onrender.com",
+      "url": "https://www.cigani.com.tr",
       "telephone": "+905332059873",
       "address": {
         "@type": "PostalAddress",
@@ -32,9 +33,9 @@ function App() {
       "openingHours": "Mo-Su 17:00-01:00",
       "servesCuisine": ["Turkish", "Aegean", "Mediterranean"],
       "priceRange": "₺₺",
-      "image": "https://cigani-website.onrender.com/images/hero.jpg",
+      "image": "https://www.cigani.com.tr/images/hero.jpg",
       "sameAs": [
-        "https://www.instagram.com/cigani_restaurant"
+        "https://www.instagram.com/cigani.sigacik"
       ]
     };
 
@@ -49,15 +50,17 @@ function App() {
   }, []);
 
   return (
-    <LanguageProvider>
-      <div className="App">
-        <Navbar />
-        <Hero />
-        <About />
-        <Gallery />
-        <Menu />
-      </div>
-    </LanguageProvider>
+    <HelmetProvider>
+      <LanguageProvider>
+        <div className="App">
+          <Navbar />
+          <Hero />
+          <About />
+          <Gallery />
+          <Menu />
+        </div>
+      </LanguageProvider>
+    </HelmetProvider>
   );
 }
 

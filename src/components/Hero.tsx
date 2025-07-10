@@ -1,19 +1,11 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero: React.FC = () => {
   const { t, language } = useLanguage();
   
   return (
-    <>
-      <Helmet>
-        <title>Cigani Restaurant – Sığacık'ta Modern Ege Mutfağı</title>
-        <meta name="description" content="Sığacık'ın merkezinde, günlük hazırlanan mezeler, paylaşmaya uygun tabaklar ve modern Ege mutfağı ile samimi bir meyhane deneyimi: Cigani Restaurant." />
-        <meta name="keywords" content="Sığacık restoran, Cigani Restaurant, Ege mezeleri, Sığacık akşam yemeği, modern meyhane, Sığacık meyhane, Seferihisar yemek, yavaş yemek, Sığacık Ege mutfağı, Sığacık'ta nerede yenir, Sığacık akşam planı" />
-        <link rel="canonical" href="https://www.cigani.com.tr" />
-      </Helmet>
-      <section className="relative h-screen flex items-center justify-center">
+    <section className="relative h-screen flex items-center justify-center">
       {/* Background image with high opacity for original photo look */}
       <div className="absolute inset-0 bg-[url('/images/hero.jpg')] bg-cover bg-center bg-no-repeat opacity-90"></div>
 
@@ -45,7 +37,6 @@ const Hero: React.FC = () => {
         </p>
       </div>
     </section>
-    </>
   );
 };
 

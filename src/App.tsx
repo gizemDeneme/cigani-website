@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './contexts/LanguageContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -50,17 +49,15 @@ function App() {
   }, []);
 
   return (
-    <HelmetProvider>
-      <LanguageProvider>
-        <div className="App">
-          <Navbar />
-          <Hero />
-          <About />
-          <Gallery />
-          <Menu />
-        </div>
-      </LanguageProvider>
-    </HelmetProvider>
+    <LanguageProvider>
+      <div className="App">
+        <Navbar />
+        <Hero />
+        <About />
+        <Gallery />
+        <Menu />
+      </div>
+    </LanguageProvider>
   );
 }
 

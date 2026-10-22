@@ -49,14 +49,12 @@ export const translations = {
     // Form placeholders
     namePlaceholder: 'Adınız ve soyadınız',
     emailPlaceholder: 'ornek@email.com',
-    phonePlaceholder: '0533 205 98 73',
     guestsPlaceholder: 'Örn: 2',
     timeSelectPlaceholder: 'Saat seçiniz',
     notesPlaceholder: 'Özel isteklerinizi buraya yazabilirsiniz...',
     
     // Contact Info
     addressValue: 'Sığacık, 128. Sk. No:22, 35460 Seferihisar/İzmir',
-    phoneValue: '+905332059873',
     instagramValue: '@cigani.sigacik',
     workingHoursValue: '17:00 - 01:00',
     
@@ -117,14 +115,12 @@ export const translations = {
     // Form placeholders
     namePlaceholder: 'Your full name',
     emailPlaceholder: 'example@email.com',
-    phonePlaceholder: '0533 205 98 73',
     guestsPlaceholder: 'e.g. 2',
     timeSelectPlaceholder: 'Select time',
     notesPlaceholder: 'Write your special requests here...',
     
     // Contact Info
     addressValue: 'Sığacık, 128. Sk. No:22, 35460 Seferihisar/İzmir',
-    phoneValue: '+905332059873',
     instagramValue: '@cigani.sigacik',
     workingHoursValue: '17:00 - 01:00',
     

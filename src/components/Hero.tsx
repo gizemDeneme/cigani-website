@@ -2,18 +2,11 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero: React.FC = () => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   
   return (
-    <section className="relative h-screen flex items-center justify-center">
-      {/* Background image with high opacity for original photo look */}
-      <div className="absolute inset-0 bg-[url('/images/hero.jpg')] bg-cover bg-center bg-no-repeat opacity-90"></div>
-
-      {/* Lighter overlay for better image visibility and text readability */}
-      <div className="absolute inset-0 bg-black/30 z-10"></div>
-
-      {/* Content overlay */}
-      <div className="relative z-20 text-center w-full">
+    <section className="bg-[#8a6a48] pt-32 pb-12 md:pt-36 md:pb-16">
+      <div className="text-center w-full">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-light mb-6 tracking-wide drop-shadow-lg text-warm-gray-50">
           {language === 'tr' ? 'Yalın. Taze. Ege.' : 'Simple. Fresh. Aegean.'}
         </h1>

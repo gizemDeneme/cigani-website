@@ -14,9 +14,7 @@ const Navbar: React.FC = () => {
 
   const contactInfo = {
     address: 'Sığacık, 128. Sk. No:22, 35460 Seferihisar/İzmir',
-    phone: '+905332059873',
     instagram: 'https://instagram.com/cigani.sigacik',
-    hours: '17:00 - 01:00',
   };
 
   const handleMenuToggle = () => setMenuOpen((open) => !open);
@@ -144,10 +142,6 @@ const Navbar: React.FC = () => {
                 <p className="text-warm-gray-600">{contactInfo.address}</p>
               </div>
               <div>
-                <h3 className="text-xl font-serif font-medium text-warm-gray-800 mb-2">{t('phone')}</h3>
-                <p className="text-warm-gray-600">{contactInfo.phone}</p>
-              </div>
-              <div>
                 <h3 className="text-xl font-serif font-medium text-warm-gray-800 mb-2">{t('instagram')}</h3>
                 <a
                   href={contactInfo.instagram}
@@ -160,141 +154,6 @@ const Navbar: React.FC = () => {
                   </svg>
                   @cigani.sigacik
                 </a>
-              </div>
-              <div>
-                <h3 className="text-xl font-serif font-medium text-warm-gray-800 mb-2">{t('workingHours')}</h3>
-                <p className="text-warm-gray-600">{contactInfo.hours}</p>
-              </div>
-              <div>
-                <h3 className="text-xl font-serif font-medium text-warm-gray-800 mb-4">{t('reservationTitle')}</h3>
-                <form 
-                  action="https://formsubmit.co/info@boii.com.tr" 
-                  method="POST"
-                  className="space-y-4"
-                >
-                  {/* Hidden fields */}
-                  <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_subject" value="Yeni Rezervasyon Talebi" />
-                  
-                  {/* Name field */}
-                  <div>
-                    <label className="block text-sm font-medium text-warm-gray-700 mb-1">
-                      {t('name')} *
-                    </label>
-                    <input
-                      type="text"
-                      name="isim"
-                      required
-                      className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none rounded"
-                      placeholder={t('namePlaceholder')}
-                    />
-                  </div>
-                  
-                  {/* Email field */}
-                  <div>
-                    <label className="block text-sm font-medium text-warm-gray-700 mb-1">
-                      {t('email')} *
-                    </label>
-                    <input
-                      type="email"
-                      name="eposta"
-                      required
-                      className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none rounded"
-                      placeholder={t('emailPlaceholder')}
-                    />
-                  </div>
-                  
-                  {/* Phone field */}
-                  <div>
-                    <label className="block text-sm font-medium text-warm-gray-700 mb-1">
-                      {t('phoneNumber')} *
-                    </label>
-                    <input
-                      type="tel"
-                      name="telefon"
-                      required
-                      className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none rounded"
-                      placeholder={t('phonePlaceholder')}
-                    />
-                  </div>
-                  
-                  {/* Number of guests field */}
-                  <div>
-                    <label className="block text-sm font-medium text-warm-gray-700 mb-1">
-                      {t('guests')} *
-                    </label>
-                    <input
-                      type="text"
-                      name="kisi_sayisi"
-                      required
-                      className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none rounded"
-                      placeholder={t('guestsPlaceholder')}
-                    />
-                  </div>
-                  
-                  {/* Date field */}
-                  <div>
-                    <label className="block text-sm font-medium text-warm-gray-700 mb-1">
-                      {t('date')} *
-                    </label>
-                    <input
-                      type="date"
-                      name="tarih"
-                      required
-                      className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none rounded"
-                    />
-                  </div>
-                  
-                  {/* Time field */}
-                  <div>
-                    <label className="block text-sm font-medium text-warm-gray-700 mb-1">
-                      {t('time')} *
-                    </label>
-                    <select
-                      name="saat"
-                      required
-                      className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none rounded"
-                    >
-                      <option value="">{t('timeSelectPlaceholder')}</option>
-                      {/* Assuming translations object is defined elsewhere or will be added */}
-                      {/* For now, using a placeholder or a simple array if translations is not available */}
-                      {/* This part needs to be properly integrated with translations */}
-                      {/* Example: translations[language]?.timeOptions || [] */}
-                      <option value="17:00">17:00</option>
-                      <option value="17:30">17:30</option>
-                      <option value="18:00">18:00</option>
-                      <option value="18:30">18:30</option>
-                      <option value="19:00">19:00</option>
-                      <option value="19:30">19:30</option>
-                      <option value="20:00">20:00</option>
-                      <option value="20:30">20:30</option>
-                      <option value="21:00">21:00</option>
-                      <option value="21:30">21:30</option>
-                      <option value="22:00">22:00</option>
-                    </select>
-                  </div>
-                  
-                  {/* Notes field */}
-                  <div>
-                    <label className="block text-sm font-medium text-warm-gray-700 mb-1">
-                      {t('notes')}
-                    </label>
-                    <textarea
-                      name="notlar"
-                      rows={3}
-                      className="w-full px-3 py-2 border border-warm-gray-300 focus:border-warm-gray-500 focus:outline-none rounded resize-none"
-                      placeholder={t('notesPlaceholder')}
-                    />
-                  </div>
-                  
-                  {/* Submit button */}
-                  <button
-                    type="submit"
-                    className="w-full bg-warm-gray-800 text-white py-3 px-4 rounded hover:bg-warm-gray-700 transition-colors duration-300 font-medium"
-                  >
-                    {t('submit')}
-                  </button>
-                </form>
               </div>
             </div>
           </aside>
